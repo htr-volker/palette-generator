@@ -1,10 +1,11 @@
 from application import app
 from flask import render_template, url_for, redirect, request
 import requests
+from os import getenv
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template("index.html", title="Home")
+    return render_template("index.html", title="Home", hostname=getenv("HOSTNAME"))
 
 @app.route('/palette', methods=['GET', 'POST'])
 def get_palette():
@@ -16,7 +17,7 @@ def get_palette():
         palette_rgb.append(f"({colour[0]}, {colour[1]}, {colour[2]})")
     name = requests.get("http://name-generator:5002/name")
     name = " ".join(name.json()["name"])
-    return render_template("index.html", title=name, palette=palette_rgb)
+    return render_template("index.html", title=name, palette=palette_rgb, hostname=getenv("HOSTNAME"))
 
 @app.route('/about', methods=['GET'])
 def about():
