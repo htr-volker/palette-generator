@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: colour-generator
+spec:
+  selector:
+    app: colour-generator
+  ports: 
+  - protocol: TCP
+    port: 5001
+    targetPort: 5001
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colour-generator
+  labels: 
+    app: colour-generator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: colour-generator
+  template:
+    metadata:
+      labels:
+        app: colour-generator
+    spec:
+      containers:
+      - name: colour-generator
+        image: htrvolker/palette_generator:latest
+        ports:
+        - containerPort: 5001
