@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <br>
+    <form action="/palette" method="post">
+        <button class="btn btn-primary" type="submit">Generate Palette</button>
+    </form>
+    <br>
+    <h3>{{ title }}</h3>
+    {% for colour in palette %}
+        <div class="colour" style="background:rgb{{ colour }}"></div>
+    {% endfor %}
+</div>
+{% endblock content %}
