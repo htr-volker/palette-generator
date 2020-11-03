@@ -1,2 +1,3 @@
 __pycache__
 frontend/application/.DS_Store
+k8s/aws-auth-cm.yaml
