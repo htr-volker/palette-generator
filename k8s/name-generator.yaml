@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
       - name: name-generator
-        image: htrvolker/name_generator:latest
+        image: htrvolker/name-generator:latest
         ports:
         - containerPort: 5002

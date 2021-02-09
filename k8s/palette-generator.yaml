@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: colour-generator
+  name: palette-generator
 spec:
   selector:
-    app: colour-generator
+    app: palette-generator
   ports: 
   - protocol: TCP
     port: 5001
@@ -14,21 +14,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: colour-generator
+  name: palette-generator
   labels: 
-    app: colour-generator
+    app: palette-generator
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: colour-generator
+      app: palette-generator
   template:
     metadata:
       labels:
-        app: colour-generator
+        app: palette-generator
     spec:
       containers:
-      - name: colour-generator
-        image: htrvolker/palette_generator:latest
+      - name: palette-generator
+        image: htrvolker/palette-generator:latest
         ports:
         - containerPort: 5001

@@ -8,16 +8,16 @@ services:
     - published: 5000
       target: 5000
   palette_generator:
-    container_name: palette_generator
-    image: htrvolker/palette_generator:latest
-    build: ./palette_generator
+    container_name: palette-generator
+    image: htrvolker/palette-generator:latest
+    build: ./palette-generator
     ports:
     - published: 5001
       target: 5001
   name_generator:
-    container_name: name_generator
-    image: htrvolker/name_generator:latest
-    build: ./name_generator
+    container_name: name-generator
+    image: htrvolker/name-generator:latest
+    build: ./name-generator
     ports:
     - target: 5002
       published: 5002

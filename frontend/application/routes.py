@@ -11,7 +11,7 @@ def home():
 def get_palette():
     if request.method == "GET":
         return redirect(url_for("home"))
-    palette = requests.get("http://colour-generator:5001/palette")
+    palette = requests.get("http://palette-generator:5001/palette")
     palette_rgb = []
     for colour in palette.json()["palette"]:
         palette_rgb.append(f"({colour[0]}, {colour[1]}, {colour[2]})")
