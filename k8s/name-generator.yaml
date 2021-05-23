@@ -17,16 +17,16 @@ metadata:
   name: name-generator
   labels: 
     app: name-generator
-strategy:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: name-generator
+  strategy:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25% 
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: name-generator
   template:
     metadata:
       labels:
@@ -37,10 +37,10 @@ spec:
         image: htrvolker/name-generator:latest
         ports:
         - containerPort: 5002
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        # resources:
+        #   requests:
+        #     memory: "64Mi"
+        #     cpu: "250m"
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"

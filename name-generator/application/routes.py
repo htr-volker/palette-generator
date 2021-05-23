@@ -12,7 +12,7 @@ def generate_name():
         "Story", "Mountain", "Dusk", "Fountain", "Foundation", "Twilight", "Snow", "Rain", "Sun", "Wood"
     ]
 
-    palette_name = { "name" : [random.choice(words)] }
+    palette_name = { "name" : [random.choice(words) + random.choice(words)] }
     
     if random.randint(0,10) > 1:
         palette_name["name"].append(random.choice(words))
