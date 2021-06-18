@@ -15,4 +15,4 @@ pip3 install -U pip
 pip3 install --user ansible
 
 # Install dependencies
-~/.local/bin/ansible-playbook jenkins-setup.yaml
+~/.local/bin/ansible-playbook ansible/jenkins-setup.yaml
