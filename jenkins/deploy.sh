@@ -1,2 +1,4 @@
 #!/bin/bash
-kubectl apply -f k8s --namespace=$BRANCH_NAME
+echo "Namespace: ${NAMESPACE}"
+kubectl create namespace $NAMESPACE || true
+kubectl apply -f k8s --namespace=$NAMESPACE
