@@ -2,22 +2,16 @@ version: '3.7'
 services:
   frontend:
     container_name: frontend
-    image: htrvolker/frontend:v2
+    image: htrvolker/frontend:${version}
     build: ./frontend
     ports:
     - published: 5000
       target: 5000
   palette_generator:
     container_name: palette-generator
-    image: htrvolker/palette-generator:v2
+    image: htrvolker/palette-generator:${version}
     build: ./palette-generator
-    ports:
-    - published: 5001
-      target: 5001
   name_generator:
     container_name: name-generator
-    image: htrvolker/name-generator:v2
+    image: htrvolker/name-generator:${version}
     build: ./name-generator
-    ports:
-    - target: 5002
-      published: 5002
