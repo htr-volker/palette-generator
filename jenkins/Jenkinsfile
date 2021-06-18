@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    environment {
+        version = "v1"
+        K8S_CLUSTER_NAME = "k8s-cluster"
+        K8S_RESOURCE_GROUP = "k8s"
+        install = "false"
+    }
+    stages {
+        stage('Setup') {
+            steps {
+                script {
+                    if (env.install == 'true'){
+                        sh 'bash jenkins/setup.sh'
+                    }
+                }
+            }
+        }
+        stage('Build & Push') {
+            steps {
+                sh 'docker-compose build'
+                sh 'docker-compose push'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'bash jenkins/deploy.sh'
+            }
+        }
+    }
+}
