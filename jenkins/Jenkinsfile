@@ -4,11 +4,16 @@ pipeline {
         version = "v1"
         K8S_CLUSTER_NAME = "k8s-cluster"
         K8S_RESOURCE_GROUP = "k8s"
+        install = "false"
     }
     stages {
         stage('Setup') {
             steps {
-                sh 'bash jenkins/setup.sh'
+                script {
+                    if (env.install == 'true'){
+                        sh 'bash jenkins/setup.sh'
+                    }
+                }
             }
         }
         stage('Build & Push') {
