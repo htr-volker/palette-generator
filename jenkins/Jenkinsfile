@@ -4,8 +4,6 @@ pipeline {
         version = "v1"
         K8S_CLUSTER_NAME = "k8s-cluster"
         K8S_RESOURCE_GROUP = "k8s"
-        // requires multi-branch project
-        NAMESPACE = env.BRANCH_NAME
         install = "false"
     }
     stages {
