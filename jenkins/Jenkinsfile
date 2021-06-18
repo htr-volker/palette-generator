@@ -4,7 +4,7 @@ pipeline {
         version = "v1"
         K8S_CLUSTER_NAME = "k8s-cluster"
         K8S_RESOURCE_GROUP = "k8s"
-        install = "true"
+        install = "false"
     }
     stages {
         stage('Setup') {
