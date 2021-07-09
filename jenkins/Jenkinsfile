@@ -27,11 +27,11 @@ pipeline {
                 sh 'docker-compose push'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'bash jenkins/deploy.sh'
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         sh 'bash jenkins/deploy.sh'
+        //     }
+        // }
     }
     post {
         always {
