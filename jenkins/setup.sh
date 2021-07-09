@@ -8,6 +8,7 @@
 
 # Install Ansible
 # Requires pip3 to be installed
+sudo apt-get install python3-pip -y
 mkdir -p ~/.local/bin
 echo 'PATH=$PATH:~/.local/bin' >> ~/.bashrc
 source ~/.bashrc
