@@ -5,6 +5,7 @@ pipeline {
         K8S_CLUSTER_NAME = "k8s-cluster"
         K8S_RESOURCE_GROUP = "k8s"
         install = "false"
+        deploy_strat = "compose"
     }
     stages {
         stage('Setup') {
@@ -27,11 +28,22 @@ pipeline {
                 sh 'docker-compose push'
             }
         }
-        // stage('Deploy') {
-        //     steps {
-        //         sh 'bash jenkins/deploy.sh'
-        //     }
-        // }
+        stage('Deploy') {
+            steps {
+                script {
+                    if (env.deploy_strat == 'k8s'){
+                        sh 'bash jenkins/setup.sh'
+                    }
+                    if (env.deploy_strat == 'compose'){
+                        sh 'docker-compose up -d'
+                    }
+                    if (env.deploy_strat == 'swarm'){
+                        sh 'echo Skipping...'
+                    }
+                }
+                sh 'bash jenkins/deploy.sh'
+            }
+        }
     }
     post {
         always {
