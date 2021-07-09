@@ -9,7 +9,7 @@ def generate_palette():
     for _ in range(num_of_colours):
         colour = []
         for _ in range(3):
-            colour.append(randint(128,255))
+            colour.append(randint(0,255))
         palette["palette"].append(colour)
     
     return jsonify(palette)
