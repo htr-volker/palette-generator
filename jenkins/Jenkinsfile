@@ -41,7 +41,6 @@ pipeline {
                         sh 'echo Skipping...'
                     }
                 }
-                sh 'bash jenkins/deploy.sh'
             }
         }
     }
