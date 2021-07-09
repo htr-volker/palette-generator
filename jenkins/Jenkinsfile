@@ -16,6 +16,12 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                    sh 'bash jenkins/test.sh'
+                }
+            }
+        }
         stage('Build & Push') {
             steps {
                 sh 'docker-compose build'
@@ -27,5 +33,9 @@ pipeline {
                 sh 'bash jenkins/deploy.sh'
             }
         }
+    }
+    post {
+        junit 'junit.xml'
+        cobertura coberturaReportFile: 'coverage.xml', failNoReports: false
     }
 }
